@@ -118,27 +118,34 @@ export default function Twitter(props) {
 
   return (
     <>
+       <div className="navbar">
+          <div className="logo">
+            <img src='vite.svg'></img>
+            Al Manssa
+          </div>
+          <div className="profile">
+            {props.username}
+            <input type="button" onClick={props.logout} value="Logout" />
+          </div>
+
+        </div>
       <div className="twitterPage">
         <div className="posts">
           <div className="tweet">
-            <div>
-              <textarea value={tweet} onChange={(x) => {setTweet(x.target.value)}} maxLength={255}/>
-            </div>
-            <div>
+              <textarea rows={1} value={tweet} onChange={(x) => {setTweet(x.target.value)}} maxLength={255}/>
               <input
                 type="button"
                 onClick={postTweet}
                 value="Tweet"
                 disabled={tweet == ""}
               />
-            </div>
           </div>
 
           <div className="tweets">
             {tweets.map((x, i) => (
                 <div key={"div" + i}>
                   <span key={"span_1_" +i}>{x.user}</span> 
-                  <span key={"span_2" + i}>{x.createdAt.split('T')[0]}</span>
+                  <span className="tweetDate" key={"span_2" + i}>{x.createdAt.split('T')[0]}</span>
                   <p key={"p" + i}>{x.tweet}</p>
                 </div>
               ))}
@@ -147,10 +154,6 @@ export default function Twitter(props) {
         </div>
 
         <div className="users">
-          <div className="profile">
-            <input type="button" onClick={props.logout} value="Logout" />
-          </div>
-
           <div className="search">
             <Form.Select value={user} onChange={(e) => setUser(e.target.value)}>
               <option value=""></option>

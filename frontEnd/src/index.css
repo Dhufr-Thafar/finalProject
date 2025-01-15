@@ -30,9 +30,54 @@ body {
   min-height: 100vh;
 }
 
+.title{
+  font-weight: bold;
+}
+
+ul{
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+li{
+  margin-top: 5px;
+
+}
+
+.posts{
+margin-right: 15%;
+}
+
+.tweetDate{
+  float: right;
+}
+
+.tweet{
+  width: 80%;
+}
+
+.tweets{
+  text-align: left;
+  margin-top: 10px;
+}
+
+.followers{
+  text-align: left;
+  margin-top: 10px;
+}
+
+.followees{
+  text-align: left;
+  margin-top: 10px;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+input[type=button] {
+  margin-left: 10px
 }
 
 button {
@@ -69,6 +114,7 @@ button:focus-visible {
 
 .twitterPage{
   display: flex;
+  color-scheme: light light;
 }
 
 .search {
@@ -77,6 +123,10 @@ button:focus-visible {
 
 .tweet {
   display: flex;
+}
+
+.navbar {
+  overflow: scroll;
 }
 
 
