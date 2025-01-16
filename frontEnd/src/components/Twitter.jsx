@@ -46,7 +46,7 @@ export default function Twitter(props) {
   }, []);
 
   function compareTweets(a, b) {
-    return a.createAt == b.createAt ? 0 : (a.createAt < b.createAt ? -1 : 1)
+    return a.createdAt == b.createdAt ? 0 : (a.createdAt < b.createdAt ? 1 : -1)
   }
 
   function loadTweets() {
