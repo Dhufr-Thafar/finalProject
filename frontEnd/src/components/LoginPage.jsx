@@ -21,7 +21,8 @@ export default function LoginPage(props) {
       })
       .then((response) => {
         if (response.data.data == true) {
-          props.setUsername(username);
+          // props.setUsername(username);
+          props.login(username)
           setError(false)
         } else {
           setError(true)

@@ -4,18 +4,22 @@ import {useState} from "react";
 
 import "./App.css";
 export default function App() {
-  const [username, setUsername] = useState(null);
-
   function logout() {
-    setUsername(null);
+    sessionStorage.removeItem("username")
+    location.reload()
+  }
+
+  function login(username) {
+    sessionStorage.setItem("username", username)
+    location.reload()
   }
 
   return (
     <>
-      {username == null ? (
-        <LoginPage setUsername={setUsername} />
+      {sessionStorage.getItem("username")== null ? (
+        <LoginPage login={login}/>
       ) : (
-        <Twitter username={username} logout={logout} />
+        <Twitter logout={logout} />
       )}
     </>
   );

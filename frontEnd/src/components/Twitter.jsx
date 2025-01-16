@@ -14,7 +14,7 @@ export default function Twitter(props) {
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(
-        "http://localhost:8081/api/users/search/" + props.username
+        "http://localhost:8081/api/users/search/" + sessionStorage.getItem("username")
       );
       setUsers(response.data.data.toSorted());
     };
@@ -24,7 +24,7 @@ export default function Twitter(props) {
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(
-        "http://localhost:8081/api/users/followers/" + props.username
+        "http://localhost:8081/api/users/followers/" + sessionStorage.getItem("username")
       );
       setFollowers(response.data.data.toSorted());
     };
@@ -34,7 +34,7 @@ export default function Twitter(props) {
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(
-        "http://localhost:8081/api/users/followees/" + props.username
+        "http://localhost:8081/api/users/followees/" + sessionStorage.getItem("username")
       );
       setFollowees(response.data.data.toSorted());
     };
@@ -52,7 +52,7 @@ export default function Twitter(props) {
   function loadTweets() {
     const getData = async () => {
       const response = await axios.get(
-        "http://localhost:8081/api/posts/tweets/" + props.username
+        "http://localhost:8081/api/posts/tweets/" + sessionStorage.getItem("username")
       );
       setTweets(response.data.data.toSorted(compareTweets));
     };
@@ -64,7 +64,7 @@ export default function Twitter(props) {
 
     const response = await axios
       .post("http://localhost:8081/api/users/follow", {
-        follower: props.username,
+        follower: sessionStorage.getItem("username"),
         followee: user,
       })
       .then((response) => {
@@ -84,7 +84,7 @@ export default function Twitter(props) {
 
     const response = await axios
       .post("http://localhost:8081/api/posts/tweet", {
-        user: props.username,
+        user: sessionStorage.getItem("username"),
         tweet: tweet
       })
       .then((response) => {
@@ -103,7 +103,7 @@ export default function Twitter(props) {
 
     const response = await axios
       .post("http://localhost:8081/api/users/unfollow", {
-        follower: props.username,
+        follower: sessionStorage.getItem("username"),
         followee: followee,
       })
       .then((response) => {
@@ -124,7 +124,7 @@ export default function Twitter(props) {
             Al Manssa
           </div>
           <div className="profile">
-            {props.username}
+            {sessionStorage.getItem("username")}
             <input type="button" onClick={props.logout} value="Logout" />
           </div>
 
